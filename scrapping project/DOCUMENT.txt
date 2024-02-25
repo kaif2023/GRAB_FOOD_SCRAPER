@@ -1,0 +1,52 @@
+Document for Restaurant Scraper Code
+
+1. Requirements:
+
+seleniumwire: A library for handling browser automation with enhanced network capabilities.
+json: A standard Python library for JSON encoding and decoding.
+gzip: A module for working with GZIP compressed files.
+time: A standard Python library for time-related functions.
+
+
+2. Imports Used:
+
+python
+Copy code
+from seleniumwire import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+import json
+import gzip
+import time
+
+3. Description:
+The provided Python script is a web scraper using SeleniumWire to extract information about restaurants from the GrabFood website. Here's a brief overview of the script:
+
+Class: RestaurantScraper
+
+Attributes:
+
+location_to_search: Represents the location for restaurant search.
+output_file: Represents the name of the output file for storing scraped data.
+Methods:
+
+__init__(self, location_to_search): Initializes the scraper with the specified location and sets the output file name based on the location.
+slow_scroll_to_bottom(self, driver): Gradually scrolls to the bottom of the webpage with a delay.
+scrape_restaurant_data(self, driver): Scrapes restaurant data by monitoring network requests and extracting relevant information.
+run_scraper(self): Configures SeleniumWire with Chrome, performs a restaurant search, scrolls to the bottom, and scrapes data, saving it to a file.
+Function: main()
+
+Executes the scraper for multiple locations.
+Execution:
+
+The script initiates a Chrome browser using SeleniumWire with specific options to handle SSL verification issues.
+Searches for restaurants in the provided locations on the GrabFood website.
+Scrolls through the page to load additional content.
+Extracts restaurant data from network requests and saves it to a newline-delimited JSON (NDJSON) file.
+Output:
+
+The script generates NDJSON files containing information about restaurants, including ID, name, location, estimated delivery time, cuisine, and promotional offers.
+Usage:
+
+Execute the script with Python, and it will scrape and save restaurant data for the specified locations.
